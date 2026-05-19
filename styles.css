@@ -98,10 +98,7 @@
 .signature-grid span{height:80px;border:1px dashed #94a3b8;border-radius:12px;display:flex;align-items:flex-end;justify-content:center;padding:10px;color:#64748b}
 .portrait-doc .document-page{max-width:794px;margin:0 auto}
 .landscape-doc .document-page{max-width:1120px;margin:0 auto}
-@media print{
-  @page{size:A4 portrait;margin:10mm}
-  .landscape-doc{@page{size:A4 landscape;margin:10mm}}
-}
+
 
 /* UPDATE 13 */
 .obra-calendar .home-calendar-layout{grid-template-columns:1.35fr .75fr}
