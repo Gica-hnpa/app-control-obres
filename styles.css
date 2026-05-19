@@ -264,15 +264,9 @@ td input,td select{border:1px solid #cbd5e1;border-radius:8px;padding:6px;width:
 }
 
 /* UPDATE 20 FIX - impressió certificació A4 horitzontal */
-@media print{
-  @page{
-    size:A4 landscape;
-    margin:6mm;
-  }
 
-  body{
-    background:white!important;
-  }
+
+
 
   body *{
     visibility:hidden!important;
