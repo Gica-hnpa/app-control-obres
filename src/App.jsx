@@ -482,8 +482,12 @@ function calcDespesaTotal(items=[]){return items.reduce((s,x)=>s+(x.tipus==="Kil
 function calcKmTotal(items=[]){return items.reduce((s,x)=>s+(x.tipus==="Kilometratge"?(+x.km||0):0),0)}
 
 
-function calcDespesaTotal(items=[]){return items.reduce((s,x)=>s+(x.tipus==="Kilometratge"?(+x.km||0)*(+x.preuKm||0):(+x.quantitat||0)*(+x.preu||0)),0)}
-function calcKmTotal(items=[]){return items.reduce((s,x)=>s+(x.tipus==="Kilometratge"?(+x.km||0):0),0)}
+
+/* duplicate removed: calcDespesaTotal */
+
+
+/* duplicate removed: calcKmTotal */
+
 function DespesesEditor({items,setItems}){
   const tipus=["Kilometratge","Fotocòpies / impressions","Consultes telefòniques","Aparcament","Peatges","Dietes","Taxes / gestions","Missatgeria","Material auxiliar","Altres"];
   function add(){setItems([...(items||[]),{id:"d"+Date.now(),tipus:"Altres",km:"0",preuKm:"0.30",quantitat:"1",preu:"0"}])}
