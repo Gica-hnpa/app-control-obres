@@ -1377,3 +1377,15 @@ body{font-size:14px!important}
 .fact-row{display:grid;grid-template-columns:1.3fr 100px repeat(6,1fr) 90px 90px;gap:8px;align-items:center;border-bottom:1px solid #e5e7eb;padding:9px 0}
 .fact-row b{font-size:14px}
 @media(max-width:1000px){.fact-param-grid,.fact-row{grid-template-columns:1fr}}
+
+/* UPDATE 45 */
+.invoice-controls{display:flex;gap:12px;flex-wrap:wrap;padding:16px 20px}
+.invoice-controls label{font-size:12px;font-weight:900;color:#64748b;text-transform:uppercase}
+.invoice-controls select{display:block;margin-top:5px;border:1px solid #cbd5e1;border-radius:8px;padding:8px 10px;background:white;min-width:110px}
+.invoice-table{padding:0 20px 20px}
+.invoice-row{display:grid;grid-template-columns:1.4fr repeat(5,1fr) 280px;gap:10px;align-items:center;border-bottom:1px solid #e5e7eb;padding:10px 0}
+.invoice-row span{font-size:12px;color:#475569}
+.invoice-row b{color:#111827}
+.mail-help{padding:0 20px 16px;color:#475569;font-size:13px}
+@media print{.no-print,.topbar,.sidebar,.obra-side-tabs,.card-head .actions-inline{display:none!important}body{background:white!important}}
+@media(max-width:1100px){.invoice-row{grid-template-columns:1fr}.invoice-controls{display:grid;grid-template-columns:1fr 1fr 1fr}}
