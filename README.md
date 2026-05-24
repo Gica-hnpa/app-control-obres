@@ -1,1 +1,1 @@
-V51 estable refeta neta.
+V52 proposta refeta neta.
