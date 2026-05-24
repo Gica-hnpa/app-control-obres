@@ -1390,66 +1390,36 @@ body{font-size:14px!important}
 @media print{.no-print,.topbar,.sidebar,.obra-side-tabs,.card-head .actions-inline{display:none!important}body{background:white!important}}
 @media(max-width:1100px){.invoice-row{grid-template-columns:1fr}.invoice-controls{display:grid;grid-template-columns:1fr 1fr 1fr}}
 
-/* UPDATE 46 */
-.invoice-table-v46{padding:16px 20px}
-.proforma-card{border:1px solid #d6dde7;border-radius:14px;margin-bottom:14px;background:white;overflow:hidden}
-.proforma-head{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:12px 14px;background:#f8fafc;border-bottom:1px solid #e5e7eb}
-.proforma-head b{display:block}.proforma-head span{color:#64748b;font-size:12px}
-.proforma-params{display:flex;gap:12px;padding:12px 14px;border-bottom:1px solid #e5e7eb}
-.proforma-params label{font-size:11px;font-weight:900;text-transform:uppercase;color:#64748b}
-.proforma-params select{display:block;margin-top:4px;border:1px solid #cbd5e1;border-radius:8px;padding:7px;background:white}
-.proforma-totals{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;padding:12px 14px}
-.proforma-totals span{font-size:12px;color:#475569}.proforma-totals b,.proforma-totals strong{display:block;color:#111827;margin-top:3px}
-.honor-form{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;padding:16px 20px}
-.honor-form label{font-size:11px;font-weight:900;text-transform:uppercase;color:#64748b}
-.honor-form input,.honor-form select{display:block;width:100%;margin-top:5px;border:1px solid #cbd5e1;border-radius:8px;padding:8px;background:white}
-@media(max-width:1100px){.proforma-head,.proforma-params,.proforma-totals,.honor-form{display:grid;grid-template-columns:1fr}.proforma-totals{grid-template-columns:1fr 1fr}}
-
-/* UPDATE 47 */
-.safe-error{margin:20px;padding:18px;border:1px solid #fecaca;background:#fef2f2;border-radius:14px;color:#991b1b}
-.safe-error button{border:1px solid #991b1b;background:white;border-radius:8px;padding:8px 12px;font-weight:900}
-.honor-form-v47{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;padding:16px 20px}
-.honor-form-v47 label{font-size:11px;font-weight:900;text-transform:uppercase;color:#64748b}
-.honor-form-v47 input,.honor-form-v47 select{display:block;width:100%;margin-top:5px;border:1px solid #cbd5e1;border-radius:8px;padding:8px;background:white}
-.proforma-list-v47{padding:16px 20px;display:flex;flex-direction:column;gap:16px}
-.proforma-card-v47{border:1px solid #d6dde7;border-radius:14px;background:white;overflow:hidden}
-.proforma-head-v47{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:12px 14px;background:#f8fafc;border-bottom:1px solid #e5e7eb}
-.proforma-head-v47 b{display:block}.proforma-head-v47 span{color:#64748b;font-size:12px}
-.proforma-params-v47{display:flex;gap:12px;padding:12px 14px;border-bottom:1px solid #e5e7eb}
-.proforma-params-v47 label{font-size:11px;font-weight:900;text-transform:uppercase;color:#64748b}
-.proforma-params-v47 select{display:block;margin-top:5px;border:1px solid #cbd5e1;border-radius:8px;padding:8px;background:white}
-.proforma-table-v47{width:100%;border-collapse:collapse}
-.proforma-table-v47 th,.proforma-table-v47 td{border:1px solid #cbd5e1;padding:10px;text-align:right}
-.proforma-table-v47 th{text-align:left;background:#f8fafc}
-.proforma-table-v47 .total th,.proforma-table-v47 .total td{font-size:18px;font-weight:900;background:#e5e7eb}
-@media print{
-  body *{visibility:hidden!important}
-  .print-target,.print-target *{visibility:visible!important}
-  .print-target{position:absolute!important;left:0!important;top:0!important;width:100%!important;background:white!important;border:0!important}
-  .print-target .no-print{display:none!important}
-}
-@media(max-width:1100px){.honor-form-v47{grid-template-columns:1fr}.proforma-head-v47,.proforma-params-v47{display:grid;grid-template-columns:1fr}}
-
-/* UPDATE 48 */
-.honor-form-v48{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;padding:16px 20px}
-.honor-form-v48 label{font-size:11px;font-weight:900;text-transform:uppercase;color:#64748b}
-.honor-form-v48 input,.honor-form-v48 select{display:block;width:100%;margin-top:5px;border:1px solid #cbd5e1;border-radius:8px;padding:8px;background:white}
-.proforma-list-v48{padding:16px 20px;display:flex;flex-direction:column;gap:16px}
-.proforma-card-v48{border:1px solid #d6dde7;border-radius:14px;background:white;overflow:hidden}
-.proforma-head-v48{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:12px 14px;background:#f8fafc;border-bottom:1px solid #e5e7eb}
-.proforma-head-v48 b{display:block}.proforma-head-v48 span{color:#64748b;font-size:12px}
-.proforma-params-v48{display:flex;gap:12px;padding:12px 14px;border-bottom:1px solid #e5e7eb}
-.proforma-params-v48 label{font-size:11px;font-weight:900;text-transform:uppercase;color:#64748b}
-.proforma-params-v48 select{display:block;margin-top:5px;border:1px solid #cbd5e1;border-radius:8px;padding:8px;background:white}
-.proforma-table-v48{width:100%;border-collapse:collapse}
-.proforma-table-v48 th,.proforma-table-v48 td{border:1px solid #cbd5e1;padding:10px;text-align:right}
-.proforma-table-v48 th:first-child,.proforma-table-v48 td:first-child{text-align:left}
-.proforma-table-v48 th{background:#f8fafc}
-.proforma-table-v48 .total td{font-size:18px;font-weight:900;background:#e5e7eb}
+/* UPDATE 49 RESCAT */
+.honor-form-v49{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;padding:16px 20px}
+.honor-form-v49 label{font-size:11px;font-weight:900;text-transform:uppercase;color:#64748b}
+.honor-form-v49 input,.honor-form-v49 select{display:block;width:100%;margin-top:5px;border:1px solid #cbd5e1;border-radius:8px;padding:8px;background:white}
+.cert-list-v49{padding:14px 20px;display:flex;gap:10px;flex-wrap:wrap}
+.cert-pill-v49{border:1px solid #cbd5e1;border-radius:10px;background:white;padding:10px 12px;text-align:left}
+.cert-pill-v49.active{outline:2px solid #2563eb;background:#eff6ff}
+.cert-pill-v49 span,.cert-pill-v49 b{display:block;margin-top:4px}
+.cert-table-wrap{overflow:auto;padding:0 20px 16px}
+.cert-table-v49{width:100%;border-collapse:collapse;min-width:1050px}
+.cert-table-v49 th,.cert-table-v49 td{border:1px solid #cbd5e1;padding:7px;text-align:right}
+.cert-table-v49 th:first-child,.cert-table-v49 td:first-child,.cert-table-v49 .concept{text-align:left}
+.cert-table-v49 th{background:#f8fafc}
+.cert-edit-input{width:80px;border:1px solid #86efac;border-radius:6px;padding:5px;text-align:right;background:#f0fdf4}
+.proforma-list-v49{padding:16px 20px;display:flex;flex-direction:column;gap:16px}
+.proforma-card-v49{border:1px solid #d6dde7;border-radius:14px;background:white;overflow:hidden}
+.proforma-head-v49{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:12px 14px;background:#f8fafc;border-bottom:1px solid #e5e7eb}
+.proforma-head-v49 b{display:block}.proforma-head-v49 span{color:#64748b;font-size:12px}
+.proforma-params-v49{display:flex;gap:12px;padding:12px 14px;border-bottom:1px solid #e5e7eb}
+.proforma-params-v49 label{font-size:11px;font-weight:900;text-transform:uppercase;color:#64748b}
+.proforma-params-v49 select{display:block;margin-top:5px;border:1px solid #cbd5e1;border-radius:8px;padding:8px;background:white}
+.proforma-table-v49{width:100%;border-collapse:collapse}
+.proforma-table-v49 th,.proforma-table-v49 td{border:1px solid #cbd5e1;padding:10px;text-align:right}
+.proforma-table-v49 th:first-child,.proforma-table-v49 td:first-child{text-align:left}
+.proforma-table-v49 th{background:#f8fafc}
+.proforma-table-v49 .total td{font-size:18px;font-weight:900;background:#e5e7eb}
 @media print{
  body *{visibility:hidden!important}
  .print-target,.print-target *{visibility:visible!important}
  .print-target{position:absolute!important;left:0!important;top:0!important;width:100%!important;background:white!important;border:0!important}
  .print-target .no-print{display:none!important}
 }
-@media(max-width:1100px){.honor-form-v48{grid-template-columns:1fr}.proforma-head-v48,.proforma-params-v48{display:grid;grid-template-columns:1fr}}
+@media(max-width:1100px){.honor-form-v49{grid-template-columns:1fr}.proforma-head-v49,.proforma-params-v49{display:grid;grid-template-columns:1fr}}
