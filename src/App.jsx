@@ -132,74 +132,7 @@ function Kpi({t,v}){return <div className="kpi"><small>{t}</small><strong>{v}</s
 function Empty({text}){return <div className="empty">{text}</div>}
 function Badge({estat}){let cls=estat==="Activa"||estat==="Acceptada"?"ok":estat==="Pressupostada"?"warn":"info";return <span className={`badge ${cls}`}>{estat}</span>}
 
-
-function HomeCalendar({events=[]}){
-const today=new Date();
-const[month,setMonth]=useState(today.getMonth());
-const[year,setYear]=useState(today.getFullYear());
-const[selected,setSelected]=useState(today.getDate());
-const[notes,setNotes]=useState(()=>JSON.parse(localStorage.getItem("aco_calendar_notes_v41")||"[]"));
-const[editing,setEditing]=useState(null);
-useEffect(()=>localStorage.setItem("aco_calendar_notes_v41",JSON.stringify(notes)),[notes]);
-let all=[...(events||[]),...notes];
-let total=days(year,month), blanks=first(year,month);
-let selectedEvents=all.filter(e=>e.day===selected&&e.month===month&&e.year===year);
-function newNote(){
-  setEditing({id:"new",day:selected,month,year,title:"Nova nota",type:"Nota",hora:"09:00",client:"",obra:"",note:"",color:"blue"});
-}
-function save(n){
-  if(n.id==="new") setNotes(p=>[{...n,id:"home-"+Date.now(),month,year},...p]);
-  else setNotes(p=>p.map(x=>x.id===n.id?n:x));
-  setEditing(null);
-}
-function del(id){
-  if(confirm("Segur que vols eliminar aquesta nota?")){
-    setNotes(p=>p.filter(x=>x.id!==id));
-    setEditing(null);
-  }
-}
-return <Card title="Calendari" action={<button className="primary" onClick={newNote}><Plus/> Nova nota</button>}>
-  <div className="calendar-head compact">
-    <button className="secondary" onClick={()=>month===0?(setMonth(11),setYear(year-1)):setMonth(month-1)}>‹</button>
-    <button className="secondary" onClick={()=>{let d=new Date();setMonth(d.getMonth());setYear(d.getFullYear());setSelected(d.getDate())}}>Avui</button>
-    <button className="secondary" onClick={()=>month===11?(setMonth(0),setYear(year+1)):setMonth(month+1)}>›</button>
-    <select value={month} onChange={e=>setMonth(+e.target.value)}>{months.map((m,i)=><option key={m} value={i}>{m}</option>)}</select>
-    <select value={year} onChange={e=>setYear(+e.target.value)}>{years.map(y=><option key={y}>{y}</option>)}</select>
-  </div>
-  <div className="home-cal-wrap">
-    <div className="home-cal-grid">
-      {["Dl","Dt","Dc","Dj","Dv","Ds","Dg"].map(d=><div className="week" key={d}>{d}</div>)}
-      {Array.from({length:blanks}).map((_,i)=><div className="day blank" key={"b"+i}/>)}
-      {Array.from({length:total}).map((_,i)=>{
-        let day=i+1, ev=all.filter(e=>e.day===day&&e.month===month&&e.year===year);
-        return <button className={`day ${selected===day?"selected":""}`} key={day} onClick={()=>setSelected(day)}>
-          <b>{day}</b>
-          {ev.slice(0,2).map(e=><span className={`cal-event ${e.color==="red"?"red":e.color==="orange"?"orange":""}`} onClick={(x)=>{x.stopPropagation();setEditing(e)}}>{e.hora?e.hora+" · ":""}{e.title}</span>)}
-        </button>
-      })}
-    </div>
-    <div className="home-day-detail">
-      <h3>{dateShort(new Date(year,month,selected))}</h3>
-      {selectedEvents.length===0?<p>Sense notes.</p>:selectedEvents.map(e=><button className="event-detail event-click" onClick={()=>setEditing(e)}>
-        <strong>{e.title}</strong>
-        <span>{e.hora||"—"} · {e.client||"Sense client"} · {e.obra||"Sense obra"}</span>
-        <p>{e.note}</p>
-      </button>)}
-    </div>
-  </div>
-  {editing&&<div className="note-pop"><div><h3>{editing.id==="new"?"Nova nota":"Editar nota"}</h3>
-    <label><span>Data</span><input type="date" value={`${editing.year}-${String(editing.month+1).padStart(2,"0")}-${String(editing.day).padStart(2,"0")}`} onChange={e=>{let d=new Date(e.target.value);setEditing({...editing,day:d.getDate(),month:d.getMonth(),year:d.getFullYear()})}}/></label>
-    <label><span>Títol</span><input value={editing.title} onChange={e=>setEditing({...editing,title:e.target.value})}/></label>
-    <label><span>Hora</span><input type="time" value={editing.hora||"09:00"} onChange={e=>setEditing({...editing,hora:e.target.value})}/></label>
-    <label><span>Client</span><input value={editing.client||""} onChange={e=>setEditing({...editing,client:e.target.value})}/></label>
-    <label><span>Obra</span><input value={editing.obra||""} onChange={e=>setEditing({...editing,obra:e.target.value})}/></label>
-    <label><span>Observacions</span><textarea value={editing.note||""} onChange={e=>setEditing({...editing,note:e.target.value})}/></label>
-    <div className="modal-actions compact">{editing.id!=="new"&&<button className="danger" onClick={()=>del(editing.id)}>Eliminar</button>}<button className="primary" onClick={()=>save(editing)}>Guardar / Tancar</button></div>
-  </div></div>}
-</Card>
-}
-
-function Inici({clients,obres,events,setScreen,openObra}){return <><section className="hero"><div className="app-logo">CO</div><div><h1>Control d'Obres</h1><p>Gestió tècnica de clients, obres, certificacions i actes.</p><span className="version-badge soft">Versió 42 · Correccions funcionals</span></div><div className="user-card"><strong>Héctor Cubero</strong><span>Arquitecte tècnic</span><span>Núm. col·legial: pendent</span></div></section><section className="kpi-grid"><button className="kpi" onClick={()=>setScreen("Clients")}><small>CLIENTS</small><strong>{clients.length}</strong></button><button className="kpi" onClick={()=>setScreen("Projectes / Obres")}><small>PROJECTES ACTIUS</small><strong>{obres.filter(o=>o.estat!=="Tancada").length}</strong></button><button className="kpi" onClick={()=>setScreen("Avisos")}><small>AVISOS OBERTS</small><strong>{(JSON.parse(localStorage.getItem("aco_avisos_generals_v36")||"null")||[]).filter(a=>a.estat!=="Fet"&&a.estat!=="Rebutjat").length||2}</strong></button></section><section className="dashboard-grid"><div className="stack"><Card title="Projectes recents"><div className="list">{obres.slice(0,3).map(o=><ObraRow key={o.id} o={o} open={openObra}/>)}</div></Card><Card title="Avisos importants"><div className="notice-list"><button className="notice urgent" onClick={()=>setScreen("Avisos")}><b>Certificació pendent</b><span>CP Maricel · revisar proforma</span></button><button className="notice warning" onClick={()=>setScreen("Avisos")}><b>Acta pendent</b><span>Falta validació/signatura</span></button></div></Card></div><Card title="Calendari general"><HomeCalendar events={events}/></Card></section></>}
+function Inici({clients,obres,events,setScreen,openObra}){return <><section className="hero"><div className="app-logo">CO</div><div><h1>Control d'Obres</h1><p>Gestió tècnica de clients, obres, certificacions i actes.</p><span className="version-badge soft">Versió 41 · Correccions funcionals</span></div><div className="user-card"><strong>Héctor Cubero</strong><span>Arquitecte tècnic</span><span>Núm. col·legial: pendent</span></div></section><section className="kpi-grid"><button className="kpi" onClick={()=>setScreen("Clients")}><small>CLIENTS</small><strong>{clients.length}</strong></button><button className="kpi" onClick={()=>setScreen("Projectes / Obres")}><small>PROJECTES ACTIUS</small><strong>{obres.filter(o=>o.estat!=="Tancada").length}</strong></button><button className="kpi" onClick={()=>setScreen("Avisos")}><small>AVISOS OBERTS</small><strong>{(JSON.parse(localStorage.getItem("aco_avisos_generals_v36")||"null")||[]).filter(a=>a.estat!=="Fet"&&a.estat!=="Rebutjat").length||2}</strong></button></section><section className="dashboard-grid"><div className="stack"><Card title="Projectes recents"><div className="list">{obres.slice(0,3).map(o=><ObraRow key={o.id} o={o} open={openObra}/>)}</div></Card><Card title="Avisos importants"><div className="notice-list"><button className="notice urgent" onClick={()=>setScreen("Avisos")}><b>Certificació pendent</b><span>CP Maricel · revisar proforma</span></button><button className="notice warning" onClick={()=>setScreen("Avisos")}><b>Acta pendent</b><span>Falta validació/signatura</span></button></div></Card></div><Card title="Calendari general"><HomeCalendar events={events}/></Card></section></>}
 
 function Configuracio(){
 const[cfg,setCfg]=useState(()=>JSON.parse(localStorage.getItem("aco_config_v41")||"null")||{
